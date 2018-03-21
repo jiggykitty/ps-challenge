@@ -14,11 +14,31 @@ class mapViewController: UIViewController {
     @IBOutlet weak var hamburgerMenuView: UIView!
     @IBOutlet weak var hamburgerMenuLeadingEdge: NSLayoutConstraint!
     
+    @IBOutlet var contentTapRecognizer: UITapGestureRecognizer!
+    @IBOutlet var windowPanRecognizer: UIPanGestureRecognizer!
+    
+    
     @IBAction func hamburgerMenuButtonPressed(_ sender: Any) {
         moveHamburgerMenu()
     }
     
-    var menuShouldBeOpen = true
+    
+    @IBAction func backgroundContentTapped(_ sender: Any) {
+        moveHamburgerMenu()
+    }
+    
+    @IBAction func windowPannedLeft(_ sender: Any) {
+        moveHamburgerMenu()
+    }
+    
+    var menuShouldBeOpen: Bool = false {
+        didSet {
+            contentTapRecognizer.isEnabled = !menuShouldBeOpen
+            contentTapRecognizer.isEnabled = !menuShouldBeOpen
+        }
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

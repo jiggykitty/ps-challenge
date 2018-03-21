@@ -19,30 +19,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LSb-S1-m6u">
-                                <rect key="frame" x="0.0" y="180" width="375" height="487"/>
-                            </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7m-4G-arX" userLabel="mapNavigationView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="160"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-9b-jyz" userLabel="contentView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-Qw-iUX">
-                                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7m-4G-arX" userLabel="mapNavigationView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-Qw-iUX">
+                                                <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="13h-If-bAr"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="8NY-UZ-lHZ"/>
+                                                    <constraint firstAttribute="width" constant="50" id="9LJ-7W-Nr9"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="fKx-8W-QGr"/>
+                                                </constraints>
+                                                <state key="normal" image="hamburgerIcon"/>
+                                                <connections>
+                                                    <action selector="hamburgerMenuButtonPressed:" destination="Ngo-Rp-lDa" eventType="touchUpInside" id="NYq-OC-M5J"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.83921568627450982" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="13h-If-bAr"/>
-                                            <constraint firstAttribute="width" constant="50" id="9LJ-7W-Nr9"/>
+                                            <constraint firstItem="7aK-Qw-iUX" firstAttribute="top" secondItem="v7m-4G-arX" secondAttribute="topMargin" id="1Ol-gs-Z6G"/>
+                                            <constraint firstItem="7aK-Qw-iUX" firstAttribute="leading" secondItem="v7m-4G-arX" secondAttribute="leadingMargin" id="ptU-IS-Y6z"/>
+                                            <constraint firstAttribute="height" constant="160" id="yaK-Aj-bIk"/>
                                         </constraints>
-                                        <state key="normal" image="hamburgerIcon"/>
-                                        <connections>
-                                            <action selector="hamburgerMenuButtonPressed:" destination="Ngo-Rp-lDa" eventType="touchUpInside" id="NYq-OC-M5J"/>
-                                        </connections>
-                                    </button>
+                                    </view>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LSb-S1-m6u">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="487"/>
+                                    </mapView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.83921568627450982" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="Bbi-TL-X57"/>
-                                    <constraint firstItem="7aK-Qw-iUX" firstAttribute="leading" secondItem="v7m-4G-arX" secondAttribute="leadingMargin" id="CMj-eI-G1P"/>
-                                    <constraint firstItem="7aK-Qw-iUX" firstAttribute="top" secondItem="v7m-4G-arX" secondAttribute="topMargin" id="hkP-rW-dII"/>
+                                    <constraint firstAttribute="trailing" secondItem="LSb-S1-m6u" secondAttribute="trailing" id="273-t1-iOp"/>
+                                    <constraint firstItem="LSb-S1-m6u" firstAttribute="top" secondItem="v7m-4G-arX" secondAttribute="bottom" id="FYq-sZ-ddI"/>
+                                    <constraint firstAttribute="trailing" secondItem="v7m-4G-arX" secondAttribute="trailing" id="J1e-P8-7Gu"/>
+                                    <constraint firstItem="v7m-4G-arX" firstAttribute="top" secondItem="fxi-9b-jyz" secondAttribute="top" id="JK9-XI-7rh"/>
+                                    <constraint firstItem="LSb-S1-m6u" firstAttribute="leading" secondItem="fxi-9b-jyz" secondAttribute="leading" id="JNg-pQ-5Fm"/>
+                                    <constraint firstItem="v7m-4G-arX" firstAttribute="top" secondItem="fxi-9b-jyz" secondAttribute="top" id="Ltp-Pn-mqE"/>
+                                    <constraint firstAttribute="trailing" secondItem="v7m-4G-arX" secondAttribute="trailing" id="LzN-Wn-6NE"/>
+                                    <constraint firstItem="v7m-4G-arX" firstAttribute="leading" secondItem="fxi-9b-jyz" secondAttribute="leading" id="a5K-qz-1Go"/>
+                                    <constraint firstAttribute="bottom" secondItem="LSb-S1-m6u" secondAttribute="bottom" id="knj-dy-cyY"/>
+                                    <constraint firstItem="v7m-4G-arX" firstAttribute="leading" secondItem="fxi-9b-jyz" secondAttribute="leading" id="nBs-Ju-Rsm"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mi3-xU-NmR" appends="YES" id="Rr7-CB-LXJ"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJw-p6-wwS" userLabel="hamburgerMenuView">
                                 <rect key="frame" x="0.0" y="20" width="300" height="647"/>
@@ -109,26 +133,39 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="lyd-iv-kIl" firstAttribute="trailing" secondItem="LSb-S1-m6u" secondAttribute="trailing" id="2zr-ys-xcW"/>
-                            <constraint firstItem="LSb-S1-m6u" firstAttribute="top" secondItem="v7m-4G-arX" secondAttribute="bottom" id="91I-14-B0b"/>
+                            <constraint firstItem="fxi-9b-jyz" firstAttribute="top" secondItem="lyd-iv-kIl" secondAttribute="top" id="F7W-p3-COD"/>
+                            <constraint firstItem="fxi-9b-jyz" firstAttribute="leading" secondItem="lyd-iv-kIl" secondAttribute="leading" id="QQ7-3u-eMt"/>
                             <constraint firstItem="BJw-p6-wwS" firstAttribute="top" secondItem="lyd-iv-kIl" secondAttribute="top" id="QRg-Cp-LtR"/>
                             <constraint firstAttribute="bottom" secondItem="BJw-p6-wwS" secondAttribute="bottom" id="Ubt-sM-krm"/>
-                            <constraint firstItem="v7m-4G-arX" firstAttribute="leading" secondItem="CeG-na-EoB" secondAttribute="leading" id="Uyy-bo-YxH"/>
-                            <constraint firstAttribute="trailing" secondItem="v7m-4G-arX" secondAttribute="trailing" id="dYQ-Fh-0Fk"/>
                             <constraint firstItem="BJw-p6-wwS" firstAttribute="leading" secondItem="CeG-na-EoB" secondAttribute="leading" id="ev8-bj-pNX"/>
-                            <constraint firstItem="v7m-4G-arX" firstAttribute="top" secondItem="lyd-iv-kIl" secondAttribute="top" id="w46-1Z-avQ"/>
-                            <constraint firstItem="lyd-iv-kIl" firstAttribute="bottom" secondItem="LSb-S1-m6u" secondAttribute="bottom" id="wkY-r9-HxZ"/>
-                            <constraint firstItem="LSb-S1-m6u" firstAttribute="leading" secondItem="lyd-iv-kIl" secondAttribute="leading" id="zmg-E6-joe"/>
+                            <constraint firstItem="lyd-iv-kIl" firstAttribute="bottom" secondItem="fxi-9b-jyz" secondAttribute="bottom" id="iJU-md-bDA"/>
+                            <constraint firstItem="lyd-iv-kIl" firstAttribute="trailing" secondItem="fxi-9b-jyz" secondAttribute="trailing" id="tlN-9a-cqH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lyd-iv-kIl"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hfj-bw-AQp" appends="YES" id="H6o-w2-ylC"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="contentTapRecognizer" destination="mi3-xU-NmR" id="9nm-5W-gaV"/>
                         <outlet property="hamburgerMenuLeadingEdge" destination="ev8-bj-pNX" id="l8z-zy-WTX"/>
                         <outlet property="hamburgerMenuView" destination="BJw-p6-wwS" id="eqv-ZM-Ocq"/>
+                        <outlet property="windowPanRecognizer" destination="hfj-bw-AQp" id="KdZ-P0-eNJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulw-vz-jIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mi3-xU-NmR">
+                    <connections>
+                        <action selector="backgroundContentTapped:" destination="Ngo-Rp-lDa" id="bBQ-me-uvl"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="hfj-bw-AQp">
+                    <connections>
+                        <action selector="windowPannedLeft:" destination="Ngo-Rp-lDa" id="UYB-XD-HOe"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-967.20000000000005" y="-664.31784107946032"/>
         </scene>
