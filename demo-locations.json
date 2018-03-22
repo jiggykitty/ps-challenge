@@ -1,0 +1,17 @@
+[{
+ "title": "Sandburg Garage",
+ "subtitle": "Garage at Carl Sandburg Village",
+ "coordinate": {
+ "longitude": -87.631927,
+ "latitude": 41.909127
+ }
+ },
+ {
+ "title": "Standard Parking",
+ "subtitle": "900 N Michigan Ave. Valet",
+ "coordinate": {
+ "longitude": -87.626617,
+ "latitude": 41.899938
+ }
+ }
+ ]

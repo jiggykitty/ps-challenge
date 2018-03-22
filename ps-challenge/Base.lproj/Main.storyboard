@@ -46,7 +46,7 @@
                                             <constraint firstAttribute="height" constant="160" id="yaK-Aj-bIk"/>
                                         </constraints>
                                     </view>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LSb-S1-m6u">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSb-S1-m6u">
                                         <rect key="frame" x="0.0" y="160" width="375" height="487"/>
                                     </mapView>
                                 </subviews>
@@ -144,15 +144,12 @@
                             <constraint firstItem="lyd-iv-kIl" firstAttribute="trailing" secondItem="fxi-9b-jyz" secondAttribute="trailing" id="tlN-9a-cqH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lyd-iv-kIl"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="hfj-bw-AQp" appends="YES" id="H6o-w2-ylC"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="contentTapRecognizer" destination="mi3-xU-NmR" id="9nm-5W-gaV"/>
                         <outlet property="hamburgerMenuLeadingEdge" destination="ev8-bj-pNX" id="l8z-zy-WTX"/>
                         <outlet property="hamburgerMenuView" destination="BJw-p6-wwS" id="eqv-ZM-Ocq"/>
-                        <outlet property="windowPanRecognizer" destination="hfj-bw-AQp" id="KdZ-P0-eNJ"/>
+                        <outlet property="mapView" destination="LSb-S1-m6u" id="GSV-Ad-iaz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ulw-vz-jIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,11 +158,6 @@
                         <action selector="backgroundContentTapped:" destination="Ngo-Rp-lDa" id="bBQ-me-uvl"/>
                     </connections>
                 </tapGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="hfj-bw-AQp">
-                    <connections>
-                        <action selector="windowPannedLeft:" destination="Ngo-Rp-lDa" id="UYB-XD-HOe"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-967.20000000000005" y="-664.31784107946032"/>
         </scene>

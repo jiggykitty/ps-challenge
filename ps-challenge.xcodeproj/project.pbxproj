@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D966415A20633B3500EACB48 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D966415920633B3500EACB48 /* MapKit.framework */; };
+		D966415C20633D3C00EACB48 /* MyPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966415B20633D3C00EACB48 /* MyPin.swift */; };
+		D966415E206342E000EACB48 /* demo-locations.json in Resources */ = {isa = PBXBuildFile; fileRef = D966415D206342E000EACB48 /* demo-locations.json */; };
+		D966416020634C2200EACB48 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966415F20634C2200EACB48 /* FileWriter.swift */; };
 		D9F29AA62061F6E60001C6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F29AA52061F6E60001C6DF /* AppDelegate.swift */; };
 		D9F29AA82061F6E60001C6DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F29AA72061F6E60001C6DF /* ViewController.swift */; };
 		D9F29AAB2061F6E60001C6DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F29AA92061F6E60001C6DF /* Main.storyboard */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D966415920633B3500EACB48 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D966415B20633D3C00EACB48 /* MyPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPin.swift; sourceTree = "<group>"; };
+		D966415D206342E000EACB48 /* demo-locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "demo-locations.json"; sourceTree = "<group>"; };
+		D966415F20634C2200EACB48 /* FileWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 		D9F29AA22061F6E50001C6DF /* ps-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ps-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F29AA52061F6E60001C6DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F29AA72061F6E60001C6DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D966415A20633B3500EACB48 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D966415820633B3500EACB48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D966415920633B3500EACB48 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D9F29A992061F6E50001C6DF = {
 			isa = PBXGroup;
 			children = (
+				D966415D206342E000EACB48 /* demo-locations.json */,
 				D9F29AA42061F6E50001C6DF /* ps-challenge */,
 				D9F29AA32061F6E50001C6DF /* Products */,
+				D966415820633B3500EACB48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,10 +75,12 @@
 			children = (
 				D9F29AA52061F6E60001C6DF /* AppDelegate.swift */,
 				D9F29AA72061F6E60001C6DF /* ViewController.swift */,
+				D966415B20633D3C00EACB48 /* MyPin.swift */,
 				D9F29AA92061F6E60001C6DF /* Main.storyboard */,
 				D9F29AAC2061F6E60001C6DF /* Assets.xcassets */,
 				D9F29AAE2061F6E60001C6DF /* LaunchScreen.storyboard */,
 				D9F29AB12061F6E60001C6DF /* Info.plist */,
+				D966415F20634C2200EACB48 /* FileWriter.swift */,
 			);
 			path = "ps-challenge";
 			sourceTree = "<group>";
@@ -97,6 +118,11 @@
 					D9F29AA12061F6E50001C6DF = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -124,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9F29AB02061F6E60001C6DF /* LaunchScreen.storyboard in Resources */,
+				D966415E206342E000EACB48 /* demo-locations.json in Resources */,
 				D9F29AAD2061F6E60001C6DF /* Assets.xcassets in Resources */,
 				D9F29AAB2061F6E60001C6DF /* Main.storyboard in Resources */,
 			);
@@ -136,8 +163,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D966416020634C2200EACB48 /* FileWriter.swift in Sources */,
 				D9F29AA82061F6E60001C6DF /* ViewController.swift in Sources */,
 				D9F29AA62061F6E60001C6DF /* AppDelegate.swift in Sources */,
+				D966415C20633D3C00EACB48 /* MyPin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

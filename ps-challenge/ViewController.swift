@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import MapKit
 
 class mapViewController: UIViewController {
-    //MARK: IBOutlets
+    // MARK: IBOutlets
     
     @IBOutlet weak var hamburgerMenuView: UIView!
     @IBOutlet weak var hamburgerMenuLeadingEdge: NSLayoutConstraint!
     
     @IBOutlet var contentTapRecognizer: UITapGestureRecognizer!
-    @IBOutlet var windowPanRecognizer: UIPanGestureRecognizer!
     
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet { mapView.delegate = self }
+    }
     
+    // MARK: IBActions
     @IBAction func hamburgerMenuButtonPressed(_ sender: Any) {
         moveHamburgerMenu()
     }
@@ -27,23 +31,33 @@ class mapViewController: UIViewController {
         moveHamburgerMenu()
     }
     
-    @IBAction func windowPannedLeft(_ sender: Any) {
-        moveHamburgerMenu()
-    }
     
+    // MARK: Variables
     var menuShouldBeOpen: Bool = false {
         didSet {
             contentTapRecognizer.isEnabled = !menuShouldBeOpen
-            contentTapRecognizer.isEnabled = !menuShouldBeOpen
         }
     }
+    
+    let locationManager = CLLocationManager()
+    var annotations: [MyPin]?
+
     
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Move the menu out of the screen
         hamburgerMenuLeadingEdge.constant = -hamburgerMenuView.frame.width
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if !FileWriter.shared.localDataExists() {
+            do {
+                annotations = try FileWriter.shared.readDemoData()
+            }
+            catch { showErrorDialogue(message: error.localizedDescription) }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,5 +75,15 @@ class mapViewController: UIViewController {
             }
         }
     }
+    
+    func showErrorDialogue(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(actionOK)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
+extension mapViewController: MKMapViewDelegate {
+    
+}
