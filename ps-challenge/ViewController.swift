@@ -41,16 +41,18 @@ class mapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var annotations: [MyPin]?
-
     
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Move the menu out of the screen
         hamburgerMenuLeadingEdge.constant = -hamburgerMenuView.frame.width
         
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        
         
         if !FileWriter.shared.localDataExists() {
             do {
@@ -58,11 +60,8 @@ class mapViewController: UIViewController {
             }
             catch { showErrorDialogue(message: error.localizedDescription) }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        mapView.addAnnotations(annotations!)
     }
     
     func moveHamburgerMenu() {
@@ -85,5 +84,37 @@ class mapViewController: UIViewController {
 }
 
 extension mapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+            
+        else {
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
+            annotationView.image = #imageLiteral(resourceName: "parkingIcon")
+            annotationView.canShowCallout = true
+            return annotationView
+        }
+    }
+}
+
+extension mapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
     
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        showErrorDialogue(message: "Can't get user location")
+    }
 }
