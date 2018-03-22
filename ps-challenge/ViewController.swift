@@ -41,7 +41,7 @@ class mapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var annotations: [MyPin]?
-    weak var resultTable: UITableViewController!
+    var resultTable: SearchResultTableTableViewController?
     
     
     
@@ -53,6 +53,8 @@ class mapViewController: UIViewController {
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        
+        searchBar.delegate = self
         
         
         if !FileWriter.shared.localDataExists() {
@@ -120,24 +122,33 @@ extension mapViewController: CLLocationManagerDelegate {
     }
 }
 
-extension mapViewController: UISearchBarDelegate, TableRefresher, UIPopoverPresentationControllerDelegate {
+extension mapViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+}
+
+extension mapViewController: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let tableVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "SearchResultTableTableViewController") as! SearchResultTableTableViewController
-        tableVC.searchString = searchBar.text
-        self.resultTable = tableVC
-        var nav = UINavigationController(rootViewController: tableVC)
+        resultTable = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultTableTableViewController") as! SearchResultTableTableViewController
+        let nav = UINavigationController(rootViewController: resultTable!)
         nav.modalPresentationStyle = UIModalPresentationStyle.popover
-        var popover = nav.popoverPresentationController!
-        tableVC.preferredContentSize = CGSize(width: 500, height: 600)
+        let popover = nav.popoverPresentationController!
+        resultTable?.preferredContentSize = CGSize(width: searchBar.frame.width, height: 400)
         popover.delegate = self
-        popover.sourceView = self.view
-        popover.sourceRect = CGRect(x: 100, y: 100, width: 0, height: 0)
+        popover.sourceView = searchBar.superview
+        popover.sourceRect = searchBar.frame
         
         self.present(nav, animated: true, completion: nil)
     }
     
-    func refreshTableViewController() {
-        resultTable.tableView.reloadData()
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        resultTable?.searchString = searchBar.text ?? ""
+        resultTable?.refreshTableViewController()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

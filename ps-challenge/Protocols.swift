@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol TableRefresher {    
+protocol TableRefreshable {
     func refreshTableViewController()
 }
