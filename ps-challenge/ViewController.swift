@@ -14,8 +14,8 @@ class mapViewController: UIViewController {
     
     @IBOutlet weak var hamburgerMenuView: UIView!
     @IBOutlet weak var hamburgerMenuLeadingEdge: NSLayoutConstraint!
-    
     @IBOutlet var contentTapRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet { mapView.delegate = self }
@@ -41,6 +41,7 @@ class mapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var annotations: [MyPin]?
+    weak var resultTable: UITableViewController!
     
     
     
@@ -116,5 +117,27 @@ extension mapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         showErrorDialogue(message: "Can't get user location")
+    }
+}
+
+extension mapViewController: UISearchBarDelegate, TableRefresher, UIPopoverPresentationControllerDelegate {
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        let tableVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "SearchResultTableTableViewController") as! SearchResultTableTableViewController
+        tableVC.searchString = searchBar.text
+        self.resultTable = tableVC
+        var nav = UINavigationController(rootViewController: tableVC)
+        nav.modalPresentationStyle = UIModalPresentationStyle.popover
+        var popover = nav.popoverPresentationController!
+        tableVC.preferredContentSize = CGSize(width: 500, height: 600)
+        popover.delegate = self
+        popover.sourceView = self.view
+        popover.sourceRect = CGRect(x: 100, y: 100, width: 0, height: 0)
+        
+        self.present(nav, animated: true, completion: nil)
+    }
+    
+    func refreshTableViewController() {
+        resultTable.tableView.reloadData()
     }
 }
