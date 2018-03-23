@@ -9,9 +9,8 @@
 import UIKit
 import MapKit
 
-class mapViewController: UIViewController {
+class MapViewController: UIViewController {
     // MARK: IBOutlets
-    
     @IBOutlet weak var hamburgerMenuView: UIView!
     @IBOutlet weak var hamburgerMenuLeadingEdge: NSLayoutConstraint!
     @IBOutlet var contentTapRecognizer: UITapGestureRecognizer!
@@ -44,9 +43,7 @@ class mapViewController: UIViewController {
     var resultTable: SearchResultTableTableViewController?
     var navController: UINavigationController?
     
-    
-    
-    
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Move the menu out of the screen
@@ -56,7 +53,6 @@ class mapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         
         searchBar.delegate = self
-        
         
         if !FileWriter.shared.localDataExists() {
             do {
@@ -70,10 +66,10 @@ class mapViewController: UIViewController {
             }
             catch { showErrorDialogue(message: error.localizedDescription) }
         }
-        
         mapView.addAnnotations(annotations!)
     }
     
+    // MARK: Functions
     func moveHamburgerMenu() {
         hamburgerMenuLeadingEdge.constant = menuShouldBeOpen ? 0 : -hamburgerMenuView.frame.width
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
@@ -93,7 +89,8 @@ class mapViewController: UIViewController {
     }
 }
 
-extension mapViewController: MKMapViewDelegate {
+// MARK: Extensions
+extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
@@ -108,7 +105,7 @@ extension mapViewController: MKMapViewDelegate {
     }
 }
 
-extension mapViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.requestLocation()
@@ -129,13 +126,13 @@ extension mapViewController: CLLocationManagerDelegate {
     }
 }
 
-extension mapViewController: UIPopoverPresentationControllerDelegate {
+extension MapViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
 }
 
-extension mapViewController: UISearchBarDelegate {
+extension MapViewController: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         resultTable = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultTableTableViewController") as? SearchResultTableTableViewController
@@ -165,7 +162,7 @@ extension mapViewController: UISearchBarDelegate {
     }
 }
 
-extension mapViewController: LocationPassable {
+extension MapViewController: LocationPassable {
     func passLocationToWrite(location: MKAnnotation) {
         let annotation = MyPin(title: location.title, subtitle: location.subtitle, coordinate: location.coordinate)
         annotations?.append(annotation)

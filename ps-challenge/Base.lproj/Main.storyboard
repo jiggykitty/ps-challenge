@@ -14,7 +14,7 @@
         <!--Map View Controller-->
         <scene sceneID="rBe-lh-EfH">
             <objects>
-                <viewController id="Ngo-Rp-lDa" customClass="mapViewController" customModule="ps_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ngo-Rp-lDa" customClass="MapViewController" customModule="ps_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CeG-na-EoB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

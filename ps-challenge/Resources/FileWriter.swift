@@ -15,10 +15,15 @@ enum FileWriterError: Error {
 import Foundation
 
 class FileWriter {
+    
+    // MARK: Variables
     static let shared = FileWriter()
     var decoder: JSONDecoder?
     var encoder: JSONEncoder?
     let fileManager = FileManager.default
+    
+    // MARK: Functions
+    private init() { }
     
     func readDemoData() throws -> [MyPin] {
         let path = Bundle.main.path(forResource: "demo-locations", ofType: "json")

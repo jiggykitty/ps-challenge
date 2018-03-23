@@ -9,10 +9,13 @@
 import MapKit
 
 class MyPin: NSObject, MKAnnotation, Codable {
+    
+    // MARK: Variables
     var title: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     
+    // MARK: Functions
     init(title: String?, subtitle: String?, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.subtitle = subtitle
@@ -21,15 +24,17 @@ class MyPin: NSObject, MKAnnotation, Codable {
         super.init()
     }
     
+    // For converting from placemark to MyPin
     init(title: String??, subtitle: String??, coordinate: CLLocationCoordinate2D) {
-        self.title = title ?? nil
-        self.title = subtitle ?? nil
+        self.title = title?.flatMap { $0 }
+        self.subtitle = subtitle?.flatMap { $0 }
         self.coordinate = coordinate
         
         super.init()
     }
 }
 
+// MARK: Extensions
 extension CLLocationCoordinate2D: Codable {
     
     enum codingKeys: CodingKey {

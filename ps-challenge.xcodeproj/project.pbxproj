@@ -14,7 +14,7 @@
 		D966416020634C2200EACB48 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966415F20634C2200EACB48 /* FileWriter.swift */; };
 		D96641642063698200EACB48 /* SearchResultTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96641632063698200EACB48 /* SearchResultTableTableViewController.swift */; };
 		D9F29AA62061F6E60001C6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F29AA52061F6E60001C6DF /* AppDelegate.swift */; };
-		D9F29AA82061F6E60001C6DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F29AA72061F6E60001C6DF /* ViewController.swift */; };
+		D9F29AA82061F6E60001C6DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F29AA72061F6E60001C6DF /* MapViewController.swift */; };
 		D9F29AAB2061F6E60001C6DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F29AA92061F6E60001C6DF /* Main.storyboard */; };
 		D9F29AAD2061F6E60001C6DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F29AAC2061F6E60001C6DF /* Assets.xcassets */; };
 		D9F29AB02061F6E60001C6DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F29AAE2061F6E60001C6DF /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		D96641632063698200EACB48 /* SearchResultTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableTableViewController.swift; sourceTree = "<group>"; };
 		D9F29AA22061F6E50001C6DF /* ps-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ps-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F29AA52061F6E60001C6DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9F29AA72061F6E60001C6DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9F29AA72061F6E60001C6DF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D9F29AAA2061F6E60001C6DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9F29AAC2061F6E60001C6DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9F29AAF2061F6E60001C6DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +56,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D986BBC82064A9B2001B4800 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9F29AA72061F6E60001C6DF /* MapViewController.swift */,
+				D96641632063698200EACB48 /* SearchResultTableTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D986BBC92064A9F7001B4800 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D966415F20634C2200EACB48 /* FileWriter.swift */,
+				D966415B20633D3C00EACB48 /* MyPin.swift */,
+				D9463CB320636DC4009A6640 /* Protocols.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		D9F29A992061F6E50001C6DF = {
 			isa = PBXGroup;
 			children = (
@@ -77,16 +96,13 @@
 		D9F29AA42061F6E50001C6DF /* ps-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D986BBC92064A9F7001B4800 /* Resources */,
+				D986BBC82064A9B2001B4800 /* ViewControllers */,
 				D9F29AA52061F6E60001C6DF /* AppDelegate.swift */,
-				D9F29AA72061F6E60001C6DF /* ViewController.swift */,
-				D96641632063698200EACB48 /* SearchResultTableTableViewController.swift */,
-				D9463CB320636DC4009A6640 /* Protocols.swift */,
-				D966415B20633D3C00EACB48 /* MyPin.swift */,
 				D9F29AA92061F6E60001C6DF /* Main.storyboard */,
 				D9F29AAC2061F6E60001C6DF /* Assets.xcassets */,
 				D9F29AAE2061F6E60001C6DF /* LaunchScreen.storyboard */,
 				D9F29AB12061F6E60001C6DF /* Info.plist */,
-				D966415F20634C2200EACB48 /* FileWriter.swift */,
 			);
 			path = "ps-challenge";
 			sourceTree = "<group>";
@@ -170,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D966416020634C2200EACB48 /* FileWriter.swift in Sources */,
-				D9F29AA82061F6E60001C6DF /* ViewController.swift in Sources */,
+				D9F29AA82061F6E60001C6DF /* MapViewController.swift in Sources */,
 				D9F29AA62061F6E60001C6DF /* AppDelegate.swift in Sources */,
 				D9463CB420636DC4009A6640 /* Protocols.swift in Sources */,
 				D966415C20633D3C00EACB48 /* MyPin.swift in Sources */,

@@ -16,20 +16,15 @@ class SearchResultTableTableViewController: UITableViewController {
     var searchCompleter = MKLocalSearchCompleter()
     var results = [MKLocalSearchCompletion]()
     var delegate: LocationPassable?
-
+    
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         searchCompleter.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    // MARK: - Table view data source
-
+    // MARK: TableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
@@ -59,6 +54,7 @@ class SearchResultTableTableViewController: UITableViewController {
 
 }
 
+// MARK: Extensions
 extension SearchResultTableTableViewController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         results = completer.results
