@@ -23,15 +23,6 @@ class MyPin: NSObject, MKAnnotation, Codable {
         
         super.init()
     }
-    
-    // For converting from placemark to MyPin
-    init(title: String??, subtitle: String??, coordinate: CLLocationCoordinate2D) {
-        self.title = title?.flatMap { $0 }
-        self.subtitle = subtitle?.flatMap { $0 }
-        self.coordinate = coordinate
-        
-        super.init()
-    }
 }
 
 // MARK: Extensions

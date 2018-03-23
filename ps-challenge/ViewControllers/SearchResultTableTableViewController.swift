@@ -46,12 +46,11 @@ class SearchResultTableTableViewController: UITableViewController {
         search.start { [unowned self] response, error in
             guard error == nil else { return }
             guard let response = response else { return }
-            let annotation = response.mapItems.first?.placemark
-            self.delegate?.passLocationToWrite(location: annotation!)
+            let annotation = response.mapItems.first!.placemark
+            let pin = MyPin(title: query.title, subtitle: query.subtitle, coordinate: annotation.coordinate)
+            self.delegate?.passLocationToWrite(location: pin)
         }
-
     }
-
 }
 
 // MARK: Extensions

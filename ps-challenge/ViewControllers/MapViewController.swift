@@ -163,7 +163,7 @@ extension MapViewController: UISearchBarDelegate {
 }
 
 extension MapViewController: LocationPassable {
-    func passLocationToWrite(location: MKAnnotation) {
+    func passLocationToWrite(location: MyPin) {
         let annotation = MyPin(title: location.title, subtitle: location.subtitle, coordinate: location.coordinate)
         annotations?.append(annotation)
         do {

@@ -13,5 +13,5 @@ protocol TableRefreshable {
 }
 
 protocol LocationPassable {
-    func passLocationToWrite(location: MKAnnotation)
+    func passLocationToWrite(location: MyPin)
 }
