@@ -6,8 +6,12 @@
 //  Copyright © 2018 Cagri Sahan. All rights reserved.
 //
 
-import UIKit
+import MapKit
 
 protocol TableRefreshable {
     func refreshTableViewController()
+}
+
+protocol LocationPassable {
+    func passLocationToWrite(location: MKAnnotation)
 }

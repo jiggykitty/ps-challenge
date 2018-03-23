@@ -13,9 +13,17 @@ class MyPin: NSObject, MKAnnotation, Codable {
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     
-    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String?, subtitle: String?, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.subtitle = subtitle
+        self.coordinate = coordinate
+        
+        super.init()
+    }
+    
+    init(title: String??, subtitle: String??, coordinate: CLLocationCoordinate2D) {
+        self.title = title ?? nil
+        self.title = subtitle ?? nil
         self.coordinate = coordinate
         
         super.init()

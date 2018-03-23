@@ -42,6 +42,7 @@ class mapViewController: UIViewController {
     let locationManager = CLLocationManager()
     var annotations: [MyPin]?
     var resultTable: SearchResultTableTableViewController?
+    var navController: UINavigationController?
     
     
     
@@ -60,6 +61,12 @@ class mapViewController: UIViewController {
         if !FileWriter.shared.localDataExists() {
             do {
                 annotations = try FileWriter.shared.readDemoData()
+            }
+            catch { showErrorDialogue(message: error.localizedDescription) }
+        }
+        else {
+            do {
+                annotations = try FileWriter.shared.readData()
             }
             catch { showErrorDialogue(message: error.localizedDescription) }
         }
@@ -131,16 +138,20 @@ extension mapViewController: UIPopoverPresentationControllerDelegate {
 extension mapViewController: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        resultTable = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultTableTableViewController") as! SearchResultTableTableViewController
-        let nav = UINavigationController(rootViewController: resultTable!)
-        nav.modalPresentationStyle = UIModalPresentationStyle.popover
-        let popover = nav.popoverPresentationController!
+        resultTable = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultTableTableViewController") as? SearchResultTableTableViewController
+        navController = UINavigationController(rootViewController: resultTable!)
+        navController!.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover = navController!.popoverPresentationController!
         resultTable?.preferredContentSize = CGSize(width: searchBar.frame.width, height: 400)
         popover.delegate = self
         popover.sourceView = searchBar.superview
         popover.sourceRect = searchBar.frame
         
-        self.present(nav, animated: true, completion: nil)
+        resultTable?.delegate = self
+        self.present(navController!, animated: true, completion: nil)
+        
+        resultTable?.searchString = searchBar.text ?? ""
+        resultTable?.refreshTableViewController()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -149,6 +160,21 @@ extension mapViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        navController?.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension mapViewController: LocationPassable {
+    func passLocationToWrite(location: MKAnnotation) {
+        let annotation = MyPin(title: location.title, subtitle: location.subtitle, coordinate: location.coordinate)
+        annotations?.append(annotation)
+        do {
+            try FileWriter.shared.writeData(pinList: annotations!)
+        }
+        catch { showErrorDialogue(message: error.localizedDescription) }
+        mapView.addAnnotation(annotation)
+        navController?.dismiss(animated: true, completion: nil)
         searchBar.resignFirstResponder()
     }
 }

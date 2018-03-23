@@ -154,11 +154,6 @@
                             <constraint firstItem="lyd-iv-kIl" firstAttribute="trailing" secondItem="fxi-9b-jyz" secondAttribute="trailing" id="tlN-9a-cqH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lyd-iv-kIl"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="BJw-p6-wwS"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="contentTapRecognizer" destination="mi3-xU-NmR" id="9nm-5W-gaV"/>
