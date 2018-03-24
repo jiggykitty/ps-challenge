@@ -11,8 +11,11 @@ import MapKit
 
 class MapViewController: UIViewController {
     // MARK: IBOutlets
+
     @IBOutlet weak var hamburgerMenuView: UIView!
     @IBOutlet weak var hamburgerMenuLeadingEdge: NSLayoutConstraint!
+    
+    
     @IBOutlet var contentTapRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var searchBar: UISearchBar!
     
