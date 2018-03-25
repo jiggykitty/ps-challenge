@@ -13,5 +13,6 @@ protocol TableRefreshable {
 }
 
 protocol LocationPassable {
-    func passLocationToWrite(location: MyPin)
+    func writePinFromCompleter(location: MyPin)
+    func writePinFromSearch(location: SearchResultPin)
 }

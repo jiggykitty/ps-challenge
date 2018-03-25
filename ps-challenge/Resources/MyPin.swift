@@ -23,6 +23,14 @@ class MyPin: NSObject, MKAnnotation, Codable {
         
         super.init()
     }
+    
+    init(fromSearchResultPin resultPin: SearchResultPin) {
+        self.title = resultPin.title
+        self.subtitle = resultPin.subtitle
+        self.coordinate = resultPin.coordinate
+        
+        super.init()
+    }
 }
 
 // MARK: Extensions

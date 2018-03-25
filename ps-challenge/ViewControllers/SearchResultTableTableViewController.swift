@@ -47,8 +47,8 @@ class SearchResultTableTableViewController: UITableViewController {
             guard error == nil else { return }
             guard let response = response else { return }
             let annotation = response.mapItems.first!.placemark
-            let pin = MyPin(title: query.title, subtitle: query.subtitle, coordinate: annotation.coordinate)
-            self.delegate?.passLocationToWrite(location: pin)
+            let pin = MyPin(title: query.title, subtitle: annotation.title, coordinate: annotation.coordinate)
+            self.delegate?.writePinFromCompleter(location: pin)
         }
     }
 }

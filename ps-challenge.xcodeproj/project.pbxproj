@@ -14,6 +14,9 @@
 		D966416020634C2200EACB48 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966415F20634C2200EACB48 /* FileWriter.swift */; };
 		D96641642063698200EACB48 /* SearchResultTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96641632063698200EACB48 /* SearchResultTableTableViewController.swift */; };
 		D9DF95E82066B8D200D7FCCB /* HamburgerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DF95E72066B8D200D7FCCB /* HamburgerMenuViewController.swift */; };
+		D9DF95EA2066C3FD00D7FCCB /* SearchResultPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DF95E92066C3FD00D7FCCB /* SearchResultPin.swift */; };
+		D9DF95EC2066CABE00D7FCCB /* MySavedPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DF95EB2066CABE00D7FCCB /* MySavedPinView.swift */; };
+		D9DF95EF2066CFC200D7FCCB /* SearchResultPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DF95EE2066CFC200D7FCCB /* SearchResultPinView.swift */; };
 		D9F29AA62061F6E60001C6DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F29AA52061F6E60001C6DF /* AppDelegate.swift */; };
 		D9F29AA82061F6E60001C6DF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F29AA72061F6E60001C6DF /* MapViewController.swift */; };
 		D9F29AAB2061F6E60001C6DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F29AA92061F6E60001C6DF /* Main.storyboard */; };
@@ -29,6 +32,9 @@
 		D966415F20634C2200EACB48 /* FileWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 		D96641632063698200EACB48 /* SearchResultTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableTableViewController.swift; sourceTree = "<group>"; };
 		D9DF95E72066B8D200D7FCCB /* HamburgerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuViewController.swift; sourceTree = "<group>"; };
+		D9DF95E92066C3FD00D7FCCB /* SearchResultPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPin.swift; sourceTree = "<group>"; };
+		D9DF95EB2066CABE00D7FCCB /* MySavedPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MySavedPinView.swift; path = "ps-challenge/Views/MySavedPinView.swift"; sourceTree = SOURCE_ROOT; };
+		D9DF95EE2066CFC200D7FCCB /* SearchResultPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPinView.swift; sourceTree = "<group>"; };
 		D9F29AA22061F6E50001C6DF /* ps-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ps-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F29AA52061F6E60001C6DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F29AA72061F6E60001C6DF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -74,8 +80,18 @@
 				D966415F20634C2200EACB48 /* FileWriter.swift */,
 				D966415B20633D3C00EACB48 /* MyPin.swift */,
 				D9463CB320636DC4009A6640 /* Protocols.swift */,
+				D9DF95E92066C3FD00D7FCCB /* SearchResultPin.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D9DF95ED2066CAD300D7FCCB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D9DF95EB2066CABE00D7FCCB /* MySavedPinView.swift */,
+				D9DF95EE2066CFC200D7FCCB /* SearchResultPinView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D9F29A992061F6E50001C6DF = {
@@ -99,6 +115,7 @@
 		D9F29AA42061F6E50001C6DF /* ps-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D9DF95ED2066CAD300D7FCCB /* Views */,
 				D986BBC92064A9F7001B4800 /* Resources */,
 				D986BBC82064A9B2001B4800 /* ViewControllers */,
 				D9F29AA52061F6E60001C6DF /* AppDelegate.swift */,
@@ -189,9 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D966416020634C2200EACB48 /* FileWriter.swift in Sources */,
+				D9DF95EF2066CFC200D7FCCB /* SearchResultPinView.swift in Sources */,
 				D9F29AA82061F6E60001C6DF /* MapViewController.swift in Sources */,
+				D9DF95EC2066CABE00D7FCCB /* MySavedPinView.swift in Sources */,
 				D9F29AA62061F6E60001C6DF /* AppDelegate.swift in Sources */,
 				D9DF95E82066B8D200D7FCCB /* HamburgerMenuViewController.swift in Sources */,
+				D9DF95EA2066C3FD00D7FCCB /* SearchResultPin.swift in Sources */,
 				D9463CB420636DC4009A6640 /* Protocols.swift in Sources */,
 				D966415C20633D3C00EACB48 /* MyPin.swift in Sources */,
 				D96641642063698200EACB48 /* SearchResultTableTableViewController.swift in Sources */,
