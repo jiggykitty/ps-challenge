@@ -147,6 +147,13 @@ extension MapViewController: UIPopoverPresentationControllerDelegate {
 extension MapViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        // Clear previous search annotations
+        let searchAnnotations = mapView.annotations.filter { $0 is SearchResultPin }
+        if !searchAnnotations.isEmpty {
+            self.mapView.removeAnnotations(searchAnnotations)
+        }
+        
         resultTable = self.storyboard?.instantiateViewController(withIdentifier: "SearchResultTableTableViewController") as? SearchResultTableTableViewController
         navController = UINavigationController(rootViewController: resultTable!)
         navController!.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -180,7 +187,7 @@ extension MapViewController: UISearchBarDelegate {
             guard let response = response else { self.showErrorDialogue(message: "Can't find location"); return }
             
             // Drop pins for the first 7 results for the user to choose from
-            for i in 0...min(response.mapItems.count, 6) {
+            for i in 0...min(response.mapItems.count-1, 6) {
                 let annotation = response.mapItems[i].placemark
                 let searchPin = SearchResultPin(title: annotation.name, subtitle: annotation.title, coordinate: annotation.coordinate)
                 self.mapView.addAnnotation(searchPin)
