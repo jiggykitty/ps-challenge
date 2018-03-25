@@ -192,6 +192,8 @@ extension MapViewController: UISearchBarDelegate {
                 let searchPin = SearchResultPin(title: annotation.name, subtitle: annotation.title, coordinate: annotation.coordinate)
                 self.mapView.addAnnotation(searchPin)
             }
+            let searchAnnotations = self.mapView.annotations.filter { $0 is SearchResultPin }
+            self.mapView.showAnnotations(searchAnnotations, animated: true)
         }
         
         searchBar.resignFirstResponder()
