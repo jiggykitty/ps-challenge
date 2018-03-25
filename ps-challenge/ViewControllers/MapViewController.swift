@@ -214,6 +214,7 @@ extension MapViewController: LocationPassable {
         searchBar.text = ""
         searchBar.resignFirstResponder()
         navController?.dismiss(animated: true, completion: nil)
+        self.mapView.showAnnotations([location], animated: true)
     }
     
     @objc func writePinFromSearch(location: SearchResultPin) {
