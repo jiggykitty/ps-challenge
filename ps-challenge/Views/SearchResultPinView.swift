@@ -11,6 +11,7 @@ import MapKit
 
 class SearchResultPinView: MKMarkerAnnotationView {
     
+    // MARK: Variables
     var delegate: LocationPassable?
     
     override var annotation: MKAnnotation? {
@@ -31,6 +32,7 @@ class SearchResultPinView: MKMarkerAnnotationView {
         }
     }
     
+    // MARK: Functions
     @objc func sendLocation() {
         delegate?.writePinFromSearch(location: self.annotation as! SearchResultPin)
     }

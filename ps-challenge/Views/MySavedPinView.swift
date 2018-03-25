@@ -10,7 +10,8 @@ import UIKit
 import MapKit
 
 class MySavedPinView: MKAnnotationView {
-
+    
+    // MARK: Variables
     override var annotation: MKAnnotation? {
         willSet {
             guard newValue is MyPin else { return }
